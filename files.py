@@ -1,15 +1,15 @@
 #email = input("Enter file name:")
 text = open("mbox-short.txt") 
 count = 0
-
+tot = 0
+ans = 0
 for line in text:
-    if not line.startswith("X-DSPAM-Confidence:"):
-        continue
-    
-    position = line.find(":")
-    number = line[position + 1 :]
-    value = number.strip()
+    if not line.startswith("X-DSPAM-Confidence:"): continue
+    count = count + 1
+    num = float(line[21:])
+    tot = num + tot
 
-    print(value)
-
+ans = tot / count        
+ 
+print("Average spam confidence:", ans)
     
