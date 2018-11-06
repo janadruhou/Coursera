@@ -10,4 +10,4 @@ for line in romeo:
         else: 
             continue
 
-    print((final)
+    print((final)gi
