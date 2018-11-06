@@ -1,13 +1,10 @@
 romeo = open('romeo.txt')
-final = list()
+lst = list()
 for line in romeo:
-    lines = line.strip()
-    s_lines = lines.split()
-    
-    
-    if word is not in final:
-        final.append(word)
-    else: 
-        continue
-
-    print(final)
+    lines = line.rstrip().split()
+    for word in lines:
+        if word in lst: continue
+        else:
+            lst.append(word)
+lst.sort()      
+print(lst)
