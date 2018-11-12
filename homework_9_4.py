@@ -5,14 +5,24 @@
 
 text = open("mbox-short.txt")
 
-count = dict()
+emails = list()
 
 for lines in text:
     if not lines.startswith("From"): continue
     s_line = lines.split()
-    email = s_line[1]
-    for adresses in email:
-        count[adresses] = count.get(adresses, 0) + 1
+    emails.append(s_line[1])
+    
+count = dict()
 
-print (count)
+for email in emails:
+    count[email] = count.get(email, 0) + 1
+    
+amount = None
+adresses = None
 
+for key, val in count.items():
+    if val > amount:
+        amount = val
+        adresses = key
+
+print (adresses, amount)
