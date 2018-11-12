@@ -3,3 +3,16 @@
 # The program creates a Python dictionary that maps the sender's mail address to a count of the number of times they appear in the file. 
 # After the dictionary is produced, the program reads through the dictionary using a maximum loop to find the most prolific committer.
 
+text = open("mbox-short.txt")
+
+count = dict()
+
+for lines in text:
+    if not lines.startswith("From"): continue
+    s_line = lines.split()
+    email = s_line[1]
+    for adresses in email:
+        count[adresses] = count.get(adresses, 0) + 1
+
+print (count)
+
