@@ -14,12 +14,15 @@
 
 import re
 
-text = open("sample.txt")
+text = open("actual_data.txt")
 nums = list()
 for lines in text:
-    s_line = lines.split()
-    stuff = re.findall('[0-9.]+', s_line)
-    num = float(stuff)
-    nums.append(num)
+    stuff = re.findall('[0-9]+', lines)
+    nums = nums + stuff
 
-print(nums)
+suma = 0
+
+for num in nums:
+    suma = suma + int(num)
+
+print(suma)
