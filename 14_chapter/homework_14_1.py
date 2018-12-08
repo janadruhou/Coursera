@@ -1,15 +1,16 @@
-import urllib2
+import urllib
 
 from bs4 import BeautifulSoup
 
-web = urllib2.urlopen(input("Enter web page:" ))
-su = BeautifulSoup(web, "html.parser")
+#preparation of data from web site
+web = 'http://py4e-data.dr-chuck.net/comments_147850.html'
+data = urllib.urlopen(web).read()
+BS = BeautifulSoup(data,'html.parser')
+lines = BS('span')
 
-sp = su('span')
+#sumation via forcycle
+sums = 0
+for tags in lines:
+    sums = sums + int(tags.contents[0])
 
-nums = []
-
-for span in sp:
-    nums.append(int(sp.string))
-
-print(sum(nums))
+print(sums)
